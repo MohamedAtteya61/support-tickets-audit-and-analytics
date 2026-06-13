@@ -3,7 +3,7 @@
 ## 📌 Project Overview
 This project delivers an end-to-end operational audit and performance analysis of **8,077 customer support records**. By executing a rigorous data quality validation check, a critical system-wide timestamp corruption affecting **83.1% of the dataset** was uncovered and isolated. 
 
-Proceeding with a statistically sound, clean sample ($N = 1,365$), this study utilizes advanced SQL aggregations and statistical correlation functions (`CORR`) within BigQuery to identify true drivers of Customer Satisfaction (CSAT), evaluate support channel efficiencies, and pinpoint operational resolution bottlenecks.
+Proceeding with a statistically sound, clean sample ($N = 1,365$), this study utilizes advanced SQL aggregations and statistical correlation functions (`CORR`) within BigQuery to identify true drivers of Customer Satisfaction (CSAT), evaluate support channel efficiencies.
 
 ### 🛠️ Tech Stack & Skills
 * **SQL Dialect:** Google BigQuery Standard SQL
@@ -22,7 +22,7 @@ $$\text{Constraint Check: } \text{Time to Resolution} \ge \text{First Response T
 An alarming **6,712 rows (83.1% of the dataset)** fundamentally failed this constraint, exhibiting impossible "time-traveling" data entry anomalies where tickets were recorded as resolved *before* an initial agent response occurred.
 
 ### 🛠️ The Mitigation Strategy
-Rather than analyzing corrupted data, which would introduce heavily skewed negative durations into business metrics, the broken records were systematically isolated. The analysis safely proceeded using the remaining **1,365 structurally sound records**.
+Rather than analyzing corrupted data, which would introduce heavily skewed negative durations into business metrics, the broken records were systematically isolated. The analysis safely proceeded using the remaining **1,365 valid records**.
 
 > **Statistical Justification:** A clean subset of $1,365$ rows represents a highly viable statistical sample size ($N > 1,000$). Governed by the Law of Large Numbers and Central Limit Theorem, this sample keeps the margin of error constrained to a tiny **$\approx 2.6\%$**, ensuring all derived operational insights remain dependable for leadership deployment.
 
@@ -42,7 +42,7 @@ Rather than analyzing corrupted data, which would introduce heavily skewed negat
 ### 4. Friction Analysis: Ticket Categories & Issue Subjects
 * **Business Question:** *Which ticket subjects drive down customer satisfaction?*
 
-*(Note: Full optimized SQL scripts mapping to each business question are available in the `/sql_queries` directory).*
+*(Note: Full optimized SQL scripts mapping to each business question are available in the `/csat_queries` directory).*
 
 ---
 
@@ -68,7 +68,7 @@ To isolate the relationship between resolution speeds and customer satisfaction,
 ---
 
 ## 📂 How to Explore this Project
-* `/sql_queries`: Contains full, optimized `.sql` scripts used during data validation and analysis.
+* `/csat_queries`: Contains full, optimized `.sql` scripts used during data validation and analysis.
 
 ***
 *Designed and developed as a core data analytics portfolio project.*
